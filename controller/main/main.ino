@@ -18,7 +18,7 @@ void loop()
 {
 	static uint8_t count = 0;
 	// Status register
-	uint8_t testBuff[] = {0x01,0x02,0x03,0x04,0x05,(count++)};
+	uint8_t testBuff[] = {0x01,0x02,0x03,0x04,(count++)};
 
 	/*
 		Code	

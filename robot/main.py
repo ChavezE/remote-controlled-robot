@@ -10,10 +10,10 @@ def main():
     while True:
 
         # if Package available, status from controller is 
-        #   status = [X_vertical,Y_vertical,X_horizontal, Y_vertial, pushbtns_bits]
-        available,status = getNRFPackage()
+        #   status = [j1_vertical, j1_horizontal, j2_vertical, j2_horizontal, pushbtns_bits]
+        available, receivedMessage = getNRFPackage()
         if(available):
-            print status
+            print receivedMessage
        
             
 
