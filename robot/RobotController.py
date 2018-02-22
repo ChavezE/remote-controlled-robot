@@ -138,10 +138,27 @@ class RobotController:
         vel_motorRF /= MAX_FINAL_MAGNITUD + 0.0
         vel_motorRB /= MAX_FINAL_MAGNITUD + 0.0
 
-        # self._motorLF.setVelocity(vel_motorLF * MAX_PWM)
-        # self._motorLB.setVelocity(vel_motorLB * MAX_PWM)
-        # self._motorRF.setVelocity(vel_motorRF * MAX_PWM)
-        # self._motorRB.setVelocity(vel_motorRB * MAX_PWM)
+
+        # Move forward or backward with the calculated value
+        if (vel_motorLF < 0):
+            self._motorLF.backward(vel_motorLF * Motor.MAX_PWM_VALUE)
+        else:
+            self._motorLF.forward(vel_motorLF * Motor.MAX_PWM_VALUE)
+
+        if (vel_motorLB < 0):
+            self._motorLB.backward(vel_motorLB * Motor.MAX_PWM_VALUE)
+        else:
+            self._motorLB.forward(vel_motorLB * Motor.MAX_PWM_VALUE)
+
+        if (vel_motorRF < 0):
+            self._motorRF.backward(vel_motorRF * Motor.MAX_PWM_VALUE)
+        else:
+            self._motorRF.forward(vel_motorRF * Motor.MAX_PWM_VALUE)
+            
+        if (vel_motorRB < 0):
+            self._motorRB.backward(vel_motorRB * Motor.MAX_PWM_VALUE)
+        else:
+            self._motorRB.forward(vel_motorRB * Motor.MAX_PWM_VALUE)
 
 
     def _fromRectangularOfControllerToPolar(self, value_x, value_y):

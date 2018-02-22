@@ -2,6 +2,9 @@ import RPi.GPIO as gpio
 
 class Motor:
 
+    # Max value of PWM
+    MAX_PWM_VALUE = 100
+
     # default frequency
     self.freq = 1000
     # Pins of Motors
