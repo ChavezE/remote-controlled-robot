@@ -17,12 +17,12 @@ class Motor:
         gpio.PWM(pins[1], self.freq).start(0)
 
     # Set Motor to move forward with a duty cycle of v (0 - 100)
-    def Forward(self, v):
+    def forward(self, v):
         gpio.PWM(self.MotorsPins[0], self.freq).ChangeDutyCycle(v)
         gpio.PWM(self.MotorsPins[1], self.freq).ChangeDutyCycle(0)
 
     # Set Motor to move backward with a duty cycle of v (0 - 100)
-    def Backward(self, v):
+    def backward(self, v):
         gpio.PWM(self.MotorsPins[0], self.freq).ChangeDutyCycle(0)
         gpio.PWM(self.MotorsPins[1], self.freq).ChangeDutyCycle(v)
 
