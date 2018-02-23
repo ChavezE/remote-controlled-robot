@@ -3,10 +3,10 @@
 
 
 // Joysticks analog pins
-const uint8_t pinJ1Vert; 
-const uint8_t pinJ1Horiz;
-const uint8_t pinJ2Vert;
-const uint8_t pinJ2Horiz;
+const uint8_t pinJ1Vert = A6; 
+const uint8_t pinJ1Horiz = A7;
+const uint8_t pinJ2Vert = A0;
+const uint8_t pinJ2Horiz = A1;
 
 // Buttons pins
 const uint8_t pinJ1Btn;
@@ -26,12 +26,12 @@ void setup()
 	pinMode(pinJ2Vert, INPUT);
 	pinMode(pinJ2Horiz, INPUT);
 
-	pinMode(pinJ1Btn, INPUT);
-	pinMode(pinJ2Btn, INPUT);
-	pinMode(pinBtnA, INPUT);
-	pinMode(pinBtnB, INPUT);
-	pinMode(pinBtnC, INPUT);
-	pinMode(pinBtnD, INPUT);
+	// pinMode(pinJ1Btn, INPUT);
+	// pinMode(pinJ2Btn, INPUT);
+	// pinMode(pinBtnA, INPUT);
+	// pinMode(pinBtnB, INPUT);
+	// pinMode(pinBtnC, INPUT);
+	// pinMode(pinBtnD, INPUT);
 
 
 	/* Begin Serial baudrate = 115200*/
@@ -54,12 +54,13 @@ void loop()
 	command[3] = map(analogRead(pinJ2Horiz), 0, 1023, 0, 255);
 
 	// Read the values of the buttons and insert them in the number in command[4]
-	command[4] = addBoolValueInInt(digitalRead(pinJ1Btn), 0, 0);
-	command[4] = addBoolValueInInt(digitalRead(pinJ2Btn), 1, command[4]);
-	command[4] = addBoolValueInInt(digitalRead(pinBtnA), 2, command[4]);
-	command[4] = addBoolValueInInt(digitalRead(pinBtnB), 3, command[4]);
-	command[4] = addBoolValueInInt(digitalRead(pinBtnC), 4, command[4]);
-	command[4] = addBoolValueInInt(digitalRead(pinBtnD), 5, command[4]);
+	command[4] = 0;
+	// command[4] = addBoolValueInInt(digitalRead(pinJ1Btn), 0, 0);
+	// command[4] = addBoolValueInInt(digitalRead(pinJ2Btn), 1, command[4]);
+	// command[4] = addBoolValueInInt(digitalRead(pinBtnA), 2, command[4]);
+	// command[4] = addBoolValueInInt(digitalRead(pinBtnB), 3, command[4]);
+	// command[4] = addBoolValueInInt(digitalRead(pinBtnC), 4, command[4]);
+	// command[4] = addBoolValueInInt(digitalRead(pinBtnD), 5, command[4]);
 
 
 	// calling write function
