@@ -6,9 +6,9 @@ class Motor:
     MAX_PWM_VALUE = 100
 
     # default frequency
-    self.freq = 1000
+    freq = 1000
     # Pins of Motors
-    self.MotorPins = None
+    MotorPins = None
 
     # Initilalize the motor, pins should be a list of 2 numbers, red and black wire of motor.
     def __init__(self, pins):
