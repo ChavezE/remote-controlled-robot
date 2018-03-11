@@ -5,7 +5,9 @@ class RobotController:
     """ 
     Class RobotController that is used to handle the received commands
     in the following order:
-        [j1_vert, j1_horiz, j2_vert, j2_horiz, btns]
+        +-------------------------------------------+
+        | j1_vert, j1_horiz, j2_vert, j2_horiz, btns |
+        +--------------------------------------------+
     each of it is a byte (8 bits).
 
     This can handle the move of 4 motors (not yet implemented) with the 
@@ -138,6 +140,10 @@ class RobotController:
         vel_motorRF /= MAX_FINAL_MAGNITUD + 0.0
         vel_motorRB /= MAX_FINAL_MAGNITUD + 0.0
 
+        print("vel_motorLF : ", vel_motorLF)
+        print("vel_motorLB : ", vel_motorLB)
+        print("vel_motorRF : ", vel_motorRF)
+        print("vel_motorRB : ", vel_motorRB)
 
         # Move forward or backward with the calculated value
         if (vel_motorLF < 0):
@@ -199,7 +205,7 @@ class RobotController:
 
         Returns:
             Integer value in degrees between 0 and 360.
-        """"
+        """
         angle_degrees = math.degrees(angle_radian);
 
         if (angle_degrees < 0):
