@@ -83,88 +83,155 @@ class RobotController:
         """
 
         # Max magnitud that will be gotten with the sum of both joysticks.
-        MAX_FINAL_MAGNITUD = math.sqrt((128 ** 2) * 2) * 2
+        # MAX_FINAL_MAGNITUD = math.sqrt((128 ** 2) * 2) * 2
 
-        j1_magnitud, j1_angle = self._fromRectangularOfControllerToPolar(
-                dict_commands["j1_horizontal"], 
-                dict_commands["j1_vertical"])
+        # j1_magnitud, j1_angle = self._fromRectangularOfControllerToPolar(
+        #         dict_commands["j1_horizontal"], 
+        #         dict_commands["j1_vertical"])
         
-        j2_magnitud, j2_angle = self._fromRectangularOfControllerToPolar(
-                dict_commands["j2_horizontal"], 
-                dict_commands["j2_vertical"])
+        # j2_magnitud, j2_angle = self._fromRectangularOfControllerToPolar(
+        #         dict_commands["j2_horizontal"], 
+        #         dict_commands["j2_vertical"])
 
-        vel_motorLF = 0
-        vel_motorLB = 0
-        vel_motorRF = 0
-        vel_motorRB = 0
+        # vel_motorLF = 0
+        # vel_motorLB = 0
+        # vel_motorRF = 0
+        # vel_motorRB = 0
 
-        # Check the joystick 1
-        if (j1_angle >= 45 and j1_angle <= 135):
-            vel_motorLF = j1_magnitud
-            vel_motorRF = j1_magnitud
-            vel_motorLB = j1_magnitud
-            vel_motorRB = j1_magnitud
-        elif (j1_angle >= 225 and j1_angle <= 315):
-            vel_motorLF = -j1_magnitud
-            vel_motorRF = -j1_magnitud
-            vel_motorLB = -j1_magnitud
-            vel_motorRB = -j1_magnitud
-        elif (j1_angle > 135 and j1_angle < 225):
-            vel_motorLF = -j1_magnitud
-            vel_motorLB = j1_magnitud
-            vel_motorRF = j1_magnitud
-            vel_motorRB = -j1_magnitud
-        else:
-            vel_motorLF = j1_magnitud
-            vel_motorLB = -j1_magnitud
-            vel_motorRF = -j1_magnitud
-            vel_motorRB = j1_magnitud
+        # # Check the joystick 1
+        # if (j1_angle >= 45 and j1_angle <= 135):
+        #     vel_motorLF = j1_magnitud
+        #     vel_motorRF = j1_magnitud
+        #     vel_motorLB = j1_magnitud
+        #     vel_motorRB = j1_magnitud
+        # elif (j1_angle >= 225 and j1_angle <= 315):
+        #     vel_motorLF = -j1_magnitud
+        #     vel_motorRF = -j1_magnitud
+        #     vel_motorLB = -j1_magnitud
+        #     vel_motorRB = -j1_magnitud
+        # elif (j1_angle > 135 and j1_angle < 225):
+        #     vel_motorLF = -j1_magnitud
+        #     vel_motorLB = j1_magnitud
+        #     vel_motorRF = j1_magnitud
+        #     vel_motorRB = -j1_magnitud
+        # else:
+        #     vel_motorLF = j1_magnitud
+        #     vel_motorLB = -j1_magnitud
+        #     vel_motorRF = -j1_magnitud
+        #     vel_motorRB = j1_magnitud
 
-        # Check the joystick 2
-        if (j2_angle > 135 and j2_angle < 225):
-            vel_motorLF += -j2_magnitud
-            vel_motorLB += -j2_magnitud
-            vel_motorRF += j2_magnitud
-            vel_motorRB += j2_magnitud
-        elif (j2_angle < 45 or j2_angle > 315):
-            vel_motorLF += j2_magnitud
-            vel_motorLB += j2_magnitud
-            vel_motorRF += -j2_magnitud
-            vel_motorRB += -j2_magnitud
+        # # Check the joystick 2
+        # if (j2_angle > 135 and j2_angle < 225):
+        #     vel_motorLF += -j2_magnitud
+        #     vel_motorLB += -j2_magnitud
+        #     vel_motorRF += j2_magnitud
+        #     vel_motorRB += j2_magnitud
+        # elif (j2_angle < 45 or j2_angle > 315):
+        #     vel_motorLF += j2_magnitud
+        #     vel_motorLB += j2_magnitud
+        #     vel_motorRF += -j2_magnitud
+        #     vel_motorRB += -j2_magnitud
         
 
-        # Make the velocity values from 0 to 1 to then
-        # map the values from 0 to MAX_PWM
-        vel_motorLF /= MAX_FINAL_MAGNITUD + 0.0
-        vel_motorLB /= MAX_FINAL_MAGNITUD + 0.0
-        vel_motorRF /= MAX_FINAL_MAGNITUD + 0.0
-        vel_motorRB /= MAX_FINAL_MAGNITUD + 0.0
+        # # Make the velocity values from 0 to 1 to then
+        # # map the values from 0 to MAX_PWM
+        # vel_motorLF /= MAX_FINAL_MAGNITUD + 0.0
+        # vel_motorLB /= MAX_FINAL_MAGNITUD + 0.0
+        # vel_motorRF /= MAX_FINAL_MAGNITUD + 0.0
+        # vel_motorRB /= MAX_FINAL_MAGNITUD + 0.0
 
-        print("vel_motorLF : ", vel_motorLF)
-        print("vel_motorLB : ", vel_motorLB)
-        print("vel_motorRF : ", vel_motorRF)
-        print("vel_motorRB : ", vel_motorRB)
+        # print("vel_motorLF : ", vel_motorLF)
+        # print("vel_motorLB : ", vel_motorLB)
+        # print("vel_motorRF : ", vel_motorRF)
+        # print("vel_motorRB : ", vel_motorRB)
 
-        # Move forward or backward with the calculated value
-        if (vel_motorLF < 0):
-            self._motorLF.backward(vel_motorLF * Motor.MAX_PWM_VALUE)
-        else:
-            self._motorLF.forward(vel_motorLF * Motor.MAX_PWM_VALUE)
+        # # Move forward or backward with the calculated value
+        # if (vel_motorLF < 0):
+        #     self._motorLF.backward(vel_motorLF * self._motorLF.MAX_PWM_VALUE)
+        # else:
+        #     self._motorLF.forward(vel_motorLF * self._motorLF.MAX_PWM_VALUE)
 
-        if (vel_motorLB < 0):
-            self._motorLB.backward(vel_motorLB * Motor.MAX_PWM_VALUE)
-        else:
-            self._motorLB.forward(vel_motorLB * Motor.MAX_PWM_VALUE)
+        # if (vel_motorLB < 0):
+        #     self._motorLB.backward(vel_motorLB * self._motorLB.MAX_PWM_VALUE)
+        # else:
+        #     self._motorLB.forward(vel_motorLB * self._motorLB.MAX_PWM_VALUE)
 
-        if (vel_motorRF < 0):
-            self._motorRF.backward(vel_motorRF * Motor.MAX_PWM_VALUE)
-        else:
-            self._motorRF.forward(vel_motorRF * Motor.MAX_PWM_VALUE)
+        # if (vel_motorRF < 0):
+        #     self._motorRF.backward(vel_motorRF * self._motorRF.MAX_PWM_VALUE)
+        # else:
+        #     self._motorRF.forward(vel_motorRF * self._motorRF.MAX_PWM_VALUE)
             
-        if (vel_motorRB < 0):
-            self._motorRB.backward(vel_motorRB * Motor.MAX_PWM_VALUE)
+        # if (vel_motorRB < 0):
+        #     self._motorRB.backward(vel_motorRB * self._motorRB.MAX_PWM_VALUE)
+        # else:
+        #     self._motorRB.forward(vel_motorRB * self._motorRB.MAX_PWM_VALUE)
+
+
+        # IDDLE
+        # if(dict_commands["j1_vertical"] <= 150 and dict_commands["j1_vertical"] >= 100 ):
+        #     self._motorRB.stop()
+        #     self._motorLB.stop()
+        #     self._motorRF.stop()
+        #     self._motorLF.stop()
+
+        if(dict_commands["j1_vertical"] > 150):
+            vel_motorLF = self.mapFromTo(dict_commands["j1_vertical"],150,256,0,80)
+            vel_motorLB = self.mapFromTo(dict_commands["j1_vertical"],150,256,0,80)
+            vel_motorRF = self.mapFromTo(dict_commands["j1_vertical"],150,256,0,80)
+            vel_motorRB = self.mapFromTo(dict_commands["j1_vertical"],150,256,0,80)
+            self._motorRB.forward(vel_motorRB)
+            self._motorLB.forward(vel_motorLB)
+            self._motorRF.forward(vel_motorRF)
+            self._motorLF.forward(vel_motorLF)  
+            print("vel_motorLF : ", vel_motorLF)
+            print("vel_motorLB : ", vel_motorLB)
+            print("vel_motorRF : ", vel_motorRF)
+            print("vel_motorRB : ", vel_motorRB)
+        elif(dict_commands["j1_vertical"] < 100):
+            vel_motorLF = self.mapFromTo(dict_commands["j1_vertical"],125,0,0,80)
+            vel_motorLB = self.mapFromTo(dict_commands["j1_vertical"],125,0,0,80)
+            vel_motorRF = self.mapFromTo(dict_commands["j1_vertical"],125,0,0,80)
+            vel_motorRB = self.mapFromTo(dict_commands["j1_vertical"],125,0,0,80)
+            self._motorRB.backward(vel_motorRB)
+            self._motorLB.backward(vel_motorLB)
+            self._motorRF.backward(vel_motorRF)
+            self._motorLF.backward(vel_motorLF)  
+            print("vel_motorLF : ", vel_motorLF)
+            print("vel_motorLB : ", vel_motorLB)
+            print("vel_motorRF : ", vel_motorRF)
+            print("vel_motorRB : ", vel_motorRB)
+
+        elif(dict_commands["j2_horizontal"] > 150):
+            vel_motorLF = self.mapFromTo(dict_commands["j2_horizontal"],150,256,0,80)
+            vel_motorLB = self.mapFromTo(dict_commands["j2_horizontal"],150,256,0,80)
+            vel_motorRF = self.mapFromTo(dict_commands["j2_horizontal"],150,256,0,80)
+            vel_motorRB = self.mapFromTo(dict_commands["j2_horizontal"],150,256,0,80)
+            self._motorRB.backward(vel_motorRB)
+            self._motorLB.forward(vel_motorLB)
+            self._motorRF.backward(vel_motorRF)
+            self._motorLF.forward(vel_motorLF)  
+            print("vel_motorLF : ", vel_motorLF)
+            print("vel_motorLB : ", vel_motorLB)
+            print("vel_motorRF : ", vel_motorRF)
+            print("vel_motorRB : ", vel_motorRB)
+        elif(dict_commands["j2_horizontal"] < 100):
+            vel_motorLF = self.mapFromTo(dict_commands["j2_horizontal"],125,0,0,80)
+            vel_motorLB = self.mapFromTo(dict_commands["j2_horizontal"],125,0,0,80)
+            vel_motorRF = self.mapFromTo(dict_commands["j2_horizontal"],125,0,0,80)
+            vel_motorRB = self.mapFromTo(dict_commands["j2_horizontal"],125,0,0,80)
+            self._motorRB.forward(vel_motorRB)
+            self._motorLB.backward(vel_motorLB)
+            self._motorRF.forward(vel_motorRF)
+            self._motorLF.backward(vel_motorLF)  
+            print("vel_motorLF : ", vel_motorLF)
+            print("vel_motorLB : ", vel_motorLB)
+            print("vel_motorRF : ", vel_motorRF)
+            print("vel_motorRB : ", vel_motorRB)
         else:
-            self._motorRB.forward(vel_motorRB * Motor.MAX_PWM_VALUE)
+            self._motorRB.stop()
+            self._motorLB.stop()
+            self._motorRF.stop()
+            self._motorLF.stop() 
 
 
     def _fromRectangularOfControllerToPolar(self, value_x, value_y):
@@ -212,3 +279,6 @@ class RobotController:
             return 360 + angle_degrees
         else:
             return angle_degrees
+
+    def mapFromTo(self,x,a,b,c,d):
+        return (x-a)*(d-c)/(b-a)+c

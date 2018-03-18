@@ -1,4 +1,4 @@
-import RPi.GPIO as gpio
+import RPi.GPIO as GPIO
 
 
 class Motor:
@@ -9,17 +9,18 @@ class Motor:
 
     # Initilalize the motor, pins should be a list of 2 numbers, red and black wire of motor.
     def __init__(self, pins):
+        GPIO.setmode(GPIO.BOARD)
         self.motorsPWM = []
         # default frequency
         self.freq = 1000
 
         # Set pins as OUTPUTS, default freq and start them at 0
-        gpio.setup(pins[0], gpio.OUT)
-        self.motorsPWM.append(gpio.PWM(pins[0], self.freq))
+        GPIO.setup(pins[0], GPIO.OUT)
+        self.motorsPWM.append(GPIO.PWM(pins[0], self.freq))
         self.motorsPWM[0].start(0)
 
-        gpio.setup(pins[1], gpio.OUT)
-        self.motorsPWM.append(gpio.PWM(pins[1], self.freq))
+        GPIO.setup(pins[1], GPIO.OUT)
+        self.motorsPWM.append(GPIO.PWM(pins[1], self.freq))
         self.motorsPWM[1].start(0)
 
     # Set Motor to move forward with a duty cycle of v (0 - 100)
@@ -39,4 +40,4 @@ class Motor:
 
     # Clean GPIO's
     def __exit__(self):
-        gpio.cleanup()
+        GPIO.cleanup()
